@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charest="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ストップウォッチ &amp; タイマー</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="col-lg-8 mx-auto p-1 py-md-5">
+            <section class="border p-3 my-3">
+                <h1 class="border-bottom border-success mb-5">ストップウォッチ</h1>
+
+                <div class="row my-5">
+                    <div class="col">
+                        <div id="sw_display" class="font-monospace fs-3 text-center"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button id="sw_start" type="button" class="btn btn-primary">スタート</button>
+                        <button id="sw_stop"  type="button" class="btn btn-secondary">ストップ</button>
+                        <button id="sw_reset" type="button" class="btn btn-warning">リセット</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="border p-3 my-3">
+                <h1 class="border-bottom border-success mb-5">タイマー</h1>
+
+                <div class="row my-5">
+                    <div class="col">
+                        <div id="tm_display" class="font-monospace fs-3 text-center"></div>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col text-center">
+                        <button data-plus="5"   type="button" class="tm_plus btn btn-secondary">+ 5秒</button>
+                        <button data-plus="60"  type="button" class="tm_plus btn btn-secondary">+ 1分</button>
+                        <button data-plus="300" type="button" class="tm_plus btn btn-secondary">+ 5分</button>
+                        <button data-plus="600" type="button" class="tm_plus btn btn-secondary">+ 10分</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button id="tm_start" type="button" class="btn btn-primary">スタート</button>
+                        <button id="tm_stop"  type="button" class="btn btn-secondary">ストップ</button>
+                        <button id="tm_reset" type="button" class="btn btn-warning">リセット</button>
+                    </div>
+                </div>
+
+                <!-- タイマー終了時に表示するダイアログ -->
+                <div id="tm_finish_modal" class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <p>タイマー終了！</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">閉じる</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="border p-3 my-3">
+                <h1 class="border-bottom border-success mb-5">考えどころ</h1>
+                <h2>ストップウォッチ</h2>
+                <ul>
+                    <li>
+                        <code>let</code>と<code>const</code>の違いはなんだろう？
+                    </li>
+                    <li>
+                        時間を計算する処理で、スタート時刻との差を取っているのはなぜだろう。<br>
+                        <code>setInterval()</code>はミリ秒単位で呼び出し間隔を指定できるのだから、<code>setInterval(..., 1);</code>のように1ミリ秒ごとにカウントアップ処理を呼び出せばいいのではないか？
+                    </li>
+                    <li>
+                        スタートボタンが複数あった場合は、プログラムをどう書き換えたらいいだろう？
+                    </li>
+                    <li>
+                        string(=文字列)型とnumber(=数値)型の違いは？ なぜ型があるんだろう？
+                    </li>
+                    <li>
+                        JavaScriptは、letやconstで変数宣言をする時に型を書かなくていい。これを動的型付け言語という。
+                        動的型付け言語は、書くのが簡単になる一方で副作用もある。副作用はなんだろう？
+                        変数宣言をする時に型も書かないといけない言語もある（静的型付け言語）。Swiftは動的・静的型付け言語のどちらだろう？
+                    </li>
+                </ul>
+
+                <h2>タイマー</h2>
+                <ul>
+                    <li>
+                        <code>tm_countdown()</code>で、if文の条件に<code>(tm_remain &lt;= 0)</code>のように「0以下」という書き方をしているのはなぜだろう。<br>
+                        1秒ずつカウントダウンするのだから、<code>(tm_remain === 0)</code>のようにゼロと同じかどうかで判断すればよいのではないだろうか？
+                    </li>
+                    <li>
+                        タイマーの方はなぜ<code>setInterval()</code>でカウントダウンしているのだろうか？
+                    </li>
+                    <li>
+                        タイマーがゼロになったら音がなるように改造してみよう。
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
